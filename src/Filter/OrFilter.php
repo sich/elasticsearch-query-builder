@@ -22,12 +22,11 @@ class OrFilter extends Filter
 
     public function build(): array
     {
-        if (empty($filter)) {
+        if (empty($this->filter)) {
             throw new QueryException('Empty filter');
         }
 
         $filter = [];
-
         foreach ($this->filter as $f) {
             $filter[] = $f->build();
         }
