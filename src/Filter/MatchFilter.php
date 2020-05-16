@@ -9,6 +9,7 @@ class MatchFilter extends Filter
     protected $field;
     protected $query;
     protected $analyzer;
+    protected $fuzziness;
 
     public function setField(string $field)
     {
@@ -31,6 +32,13 @@ class MatchFilter extends Filter
         return $this;
     }
 
+    public function setFuzziness(string $fuzziness)
+    {
+        $this->fuzziness = $fuzziness;
+
+        return $this;
+    }
+
     public function build(): array
     {
         if (null === $this->query) {
@@ -47,6 +55,10 @@ class MatchFilter extends Filter
 
         if (null !== $this->analyzer) {
             $query['match'][$this->field]['analyzer'] = $this->analyzer;
+        }
+
+        if (null !== $this->fuzziness) {
+            $query['match'][$this->field]['fuzziness'] = $this->fuzziness;
         }
 
         return $query;

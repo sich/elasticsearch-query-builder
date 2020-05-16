@@ -56,6 +56,11 @@ abstract class Filter
         return new MultiMatchFilter();
     }
 
+    public static function matchAll()
+    {
+        return new MatchAllFilter();
+    }
+
     public static function geoDistance()
     {
         return new GeoDistanceFilter();
