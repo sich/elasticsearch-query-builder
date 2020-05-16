@@ -70,4 +70,9 @@ abstract class Filter
     {
         return new PrefixFilter();
     }
+
+    public static function or()
+    {
+        return new OrFilter();
+    }
 }
